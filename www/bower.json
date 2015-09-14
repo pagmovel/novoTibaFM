@@ -6,11 +6,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.1.3",
     "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
     "iron-icon": "polymerelements/iron-icon#^1.0.0",
     "iron-icons": "polymerelements/iron-icons#^1.0.0",
     "iron-selector": "polymerelements/iron-selector#^1.0.0",
+    "jPlayer": "happyworm/jPlayer#~2.9.2",
     "paper-drawer-panel": "polymerelements/paper-drawer-panel#^1.0.0",
     "paper-header-panel": "polymerelements/paper-header-panel#^1.0.0",
     "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0",
@@ -19,6 +19,7 @@
     "paper-menu": "polymerelements/paper-menu#^1.0.0",
     "paper-styles": "polymerelements/paper-styles#^1.0.0",
     "paper-toggle-button": "polymerelements/paper-toggle-button#^1.0.0",
-    "paper-toolbar": "polymerelements/paper-toolbar#^1.0.0"
+    "paper-toolbar": "polymerelements/paper-toolbar#^1.0.0",
+    "polymer": "Polymer/polymer#~1.1.3"
   }
 }

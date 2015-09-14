@@ -17,6 +17,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 
         <link rel="import" href="bower_components/iron-icons/image-icons.html">
+        <link rel="import" href="bower_components/paper-audio-player/paper-audio-player.html">
+
         
         <link rel="import" href="picture-frame.html">
 
@@ -47,12 +49,41 @@ Left Nav + View
         <!-- Main Content -->
         <div class="content">
             <div class="flex"></div>
-            
+
             <picture-frame>
               <img src="img/logo.png" height="80">
             </picture-frame>
-        
+
+            <!--<paper-audio-player src="http://streaming05.hstbr.net:8114/live"></paper-audio-player>-->
+            <audio id="player" controls autoplay="autoplay">
+              <!--<source src="http://187.17.67.228:9173/;stream.mp3" type="audio/mp3">-->
+              <source src="http://streaming05.hstbr.net:8114/live?.wav" type="audio/wav"/> <!--type="audio/mpeg"-->
+            <!-- audio/webm,audio/ogg,audio/wav,audio/* -->
+              Your browser does not support the audio element.
+            </audio>
+            <div> 
+              <button onclick="document.getElementById('player').volume += 0.1">Vol+ </button> 
+              <button onclick="document.getElementById('player').volume -= 0.1">Vol- </button> 
+              <button onclick="document.getElementById('player').pause()">Pause</button> 
+              <button onclick="document.getElementById('player').play()">Play</button> 
+            </div>
+            
             <div class="flex"></div>
+            <div id="player">
+              <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" height="24" width="230">
+                  <param name="movie" value="http://streaming05.hstbr.net/static/jwplayer/player_simple.swf">
+                  <param name="allowfullscreen" value="true">
+                  <param name="allowscriptaccess" value="always">
+                  <param name="wmode" value="transparent">
+                  <param name="flashvars" value="file=http://streaming05.hstbr.net:8114/live?type=.flv&amp;provider=video&amp;autostart=1&amp;skin=http://streaming05.hstbr.net/static/jwplayer/skin.zip">
+                  <embed type="application/x-shockwave-flash" src="http://streaming05.hstbr.net/static/jwplayer/player_simple.swf" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" flashvars="file=http://streaming05.hstbr.net:8114/live?type=.flv&amp;provider=video&amp;autostart=1&amp;skin=http://streaming05.hstbr.net/static/jwplayer/skin.zip" height="24" width="230">
+              </object>
+          </div>
+          <div>
+            <input type="button" value="Play" onClick="play()"><br/>
+            <input type="button" value="Pause" onClick="pause()"><br/>
+            <input type="button" value="Stop" onClick="stop()"><br />
+          </div>
         </div>
 
       </paper-header-panel>
@@ -70,5 +101,39 @@ Left Nav + View
     });
 
   </script>
+  <script type="text/javascript">
+
+            var classMedia = null;
+
+            function play(){
+                classMedia = new Media(
+                    'http://streaming05.hstbr.net:8114/live',
+                    function(){},
+                    onPlayError);
+
+                classMedia.play();
+            }
+
+            function onPlayError(error) {
+                navigator.notification.alert('Código do erro: ' + error.code    + '\n' + 'Mensagem: ' + error.message + '\n',
+                    function(){},
+                    'Erro ao executar',
+                    'Fechar');
+            }
+
+            function pause() {
+                if (classMedia != null) {
+                    classMedia.pause();
+                }
+            }
+
+
+            function stop() {
+                if (classMedia != null) {
+                    classMedia.stop();
+                }
+            }
+
+</script>
 
 </dom-module>
