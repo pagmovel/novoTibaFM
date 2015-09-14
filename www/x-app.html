@@ -55,12 +55,13 @@ Left Nav + View
             </picture-frame>
 
             <!--<paper-audio-player src="http://streaming05.hstbr.net:8114/live"></paper-audio-player>-->
-            <audio id="player" controls autoplay="autoplay">
+            <!--<audio id="player" controls autoplay="autoplay">-->
+            <video id="player" controls autoplay="autoplay">
               <!--<source src="http://187.17.67.228:9173/;stream.mp3" type="audio/mp3">-->
-              <source src="http://streaming05.hstbr.net:8114/live?.wav" type="audio/wav"/> <!--type="audio/mpeg"-->
+              <source src="http://streaming05.hstbr.net:8114/live?type=.mp3" /> <!--type="audio/mpeg"-->
             <!-- audio/webm,audio/ogg,audio/wav,audio/* -->
               Your browser does not support the audio element.
-            </audio>
+            </video>
             <div> 
               <button onclick="document.getElementById('player').volume += 0.1">Vol+ </button> 
               <button onclick="document.getElementById('player').volume -= 0.1">Vol- </button> 
@@ -101,39 +102,5 @@ Left Nav + View
     });
 
   </script>
-  <script type="text/javascript">
-
-            var classMedia = null;
-
-            function play(){
-                classMedia = new Media(
-                    'http://streaming05.hstbr.net:8114/live',
-                    function(){},
-                    onPlayError);
-
-                classMedia.play();
-            }
-
-            function onPlayError(error) {
-                navigator.notification.alert('Código do erro: ' + error.code    + '\n' + 'Mensagem: ' + error.message + '\n',
-                    function(){},
-                    'Erro ao executar',
-                    'Fechar');
-            }
-
-            function pause() {
-                if (classMedia != null) {
-                    classMedia.pause();
-                }
-            }
-
-
-            function stop() {
-                if (classMedia != null) {
-                    classMedia.stop();
-                }
-            }
-
-</script>
-
+  
 </dom-module>
